@@ -1,0 +1,16 @@
+{
+  "name": "01-intro-express",
+  "version": "1.0.0",
+  "description": "Clase de API con Express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "César Guerra",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "express": "^4.19.2"
+  }
+}
