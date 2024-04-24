@@ -24,9 +24,9 @@ const petList = {
     ]
 }
 
-router.get('/api/v1/pets', (request, response) => {
-    response.send(petList);
-});
+// router.get('/api/v1/pets', (request, response) => {
+//     response.send(petList);
+// });
 
 /* PARAMS */
 // Obtener parámetros de la URL (dinámicos)
@@ -39,6 +39,26 @@ router.get('/api/v1/pets/:petId', (request, response) => {
     onePet
       ? response.status(200).send(onePet)
       : response.status(404).send({ message: 'Pet not found'});
+});
+
+/* QUERY */
+// Query: '/api/v1/pets?age=2&type=cat'
+// Las Querys son similares a Params, pero se suelen usar para filtrar información de uno o más datos.
+// Las Querys son ABIERTAS, no definimos cuantas querys pueden existir, ni como se llaman. Por lo que es importante validar que la query que estamos buscando exista.
+router.get('/api/v1/pets', (request, response) => {
+    console.log('Query de GetPets:', request.query);
+    const { age, type } = request.query;
+    let filteredPets = petList.pets;
+
+    if (age) {
+        filteredPets = filteredPets.filter(pet => pet.age === parseInt(age));
+    }
+
+    if (type) {
+        filteredPets = filteredPets.filter(pet => pet.type === type);
+    }
+
+    response.status(200).send({ pets: filteredPets });
 });
 
 module.exports = router;
