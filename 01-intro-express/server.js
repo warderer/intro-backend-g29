@@ -1,6 +1,7 @@
 // #1 Llamar a la biblioteca de express
 const express = require('express'); // Common.JS
 const petRoutes = require('./api/v1/pets');
+const cakeRoutes = require('./api/v1/cakes');
 
 // #2 Crear una instancia de express
 const app = express();
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 
 // #5 Puedo importar rutas de un archivo externo
 app.use(petRoutes);
+app.use(cakeRoutes);
 
 // #4 Levantar el servidor en un puerto, por ejemplo el 3000
 app.listen(3000, () => {
