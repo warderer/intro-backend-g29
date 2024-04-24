@@ -3,6 +3,7 @@ const express = require('express'); // Common.JS
 const petRoutes = require('./api/v1/pets');
 const cakeRoutes = require('./api/v1/cakes');
 const userRoutes = require('./api/v1/users');
+const pokemonRoutes = require('./api/v1/pokemons');
 
 // #2 Crear una instancia de express
 const app = express();
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 app.use(petRoutes);
 app.use(cakeRoutes);
 app.use(userRoutes);
+app.use(pokemonRoutes);
 
 // #4 Levantar el servidor en un puerto, por ejemplo el 3000
 app.listen(3000, () => {
