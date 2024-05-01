@@ -1,6 +1,7 @@
 require('dotenv').config()
 // #1 Llamar a la biblioteca de express
 const express = require('express') // Common.JS
+const homeRoutes = require('./routes/homeRoutes')
 
 // #2 Crear una instancia de express
 const app = express()
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 })
 
 // #5 Puedo importar rutas de un archivo externo
+app.use('/api/v1', homeRoutes)
 
 // #4 Levantar el servidor en un puerto, por ejemplo el 3000
 app.listen(3000, () => {
