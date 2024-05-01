@@ -12,7 +12,15 @@ const create = (bodyHome) => {
     .returning('*') // ¿Qué datos quiero que me regrese? - todos los datos
 }
 
+const findAll = () => {
+  return knex
+    .select(['house_id', 'title', 'description', 'guest', 'address', 'rental_price', 'active', 'created_at'])
+    .from('homes')
+    .where('active', true) // traemos los campos que no hayamos hecho un softdelete
+}
+
 // Paso #3 Exportar la función para que pueda ser usada en otro archivo
 module.exports = {
-  create
+  create,
+  findAll
 }

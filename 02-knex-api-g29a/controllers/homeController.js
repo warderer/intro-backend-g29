@@ -15,11 +15,18 @@ const createHome = (req, res) => {
 }
 
 // READ
+const findAllHomes = (req, res) => {
+  modelHomes.findAll()
+    .then(homes => res.status(200).send(homes)
+    )
+    .catch(error => res.status(400).send(error))
+}
 
 // UPDATE
 
 // DELETE
 
 module.exports = {
-  createHome
+  createHome,
+  findAllHomes
 }
