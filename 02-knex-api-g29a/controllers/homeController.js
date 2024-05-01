@@ -17,8 +17,13 @@ const createHome = (req, res) => {
 // READ
 const findAllHomes = (req, res) => {
   modelHomes.findAll()
-    .then(homes => res.status(200).send(homes)
-    )
+    .then(homes => res.status(200).send(homes))
+    .catch(error => res.status(400).send(error))
+}
+
+const findOneHome = (req, res) => {
+  modelHomes.findOne(req.params.houseId)
+    .then(home => res.status(200).send(home))
     .catch(error => res.status(400).send(error))
 }
 
@@ -28,5 +33,6 @@ const findAllHomes = (req, res) => {
 
 module.exports = {
   createHome,
-  findAllHomes
+  findAllHomes,
+  findOneHome
 }
