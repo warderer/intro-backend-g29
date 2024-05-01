@@ -27,9 +27,18 @@ const findOne = (houseId) => {
     .where('house_id', houseId) // buscamos por el id de la casa
 }
 
+const update = (houseId, bodyToUpdate) => {
+  return knex
+    .update(bodyToUpdate) // Información a actualizar
+    .from('homes')
+    .where({ house_id: houseId }) // ¿Qué casa quiero actualizar?
+    .returning(['house_id', 'title', 'description', 'guest', 'address', 'rental_price', 'active', 'created_at'])
+}
+
 // Paso #3 Exportar la función para que pueda ser usada en otro archivo
 module.exports = {
   create,
   findAll,
-  findOne
+  findOne,
+  update
 }

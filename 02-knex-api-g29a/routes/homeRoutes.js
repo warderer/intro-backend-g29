@@ -7,5 +7,6 @@ const homeController = require('../controllers/homeController')
 router.post('/homes', homeController.createHome)
 router.get('/homes', homeController.findAllHomes)
 router.get('/homes/:houseId', homeController.findOneHome)
+router.patch('/homes/:houseId', homeController.updateOneHome)
 
 module.exports = router
